@@ -2,9 +2,11 @@ name: "Terraform-db"
 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
-  pull_request_target:
+    branches:
+      - main
+  pull_request: {}
+  workflow_dispatch: {}
+  pull_request_target: {}
 
 permissions:
   contents: read
@@ -19,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
 
-    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash
@@ -90,6 +91,8 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
+        env:
+          TF_VAR_accountId: ${{ secrets.AWS_ACCOUNT_ID }}
         run: terraform plan -no-color -input=false
         continue-on-error: true
 
@@ -125,4 +128,6 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          TF_VAR_accountId: ${{ secrets.AWS_ACCOUNT_ID }}
         run: terraform apply -auto-approve -input=false
