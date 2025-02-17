@@ -13,6 +13,7 @@ O Terraform cria e gerencia recursos como:
 
 - Amazon RDS [(Relational Database Service)](https://aws.amazon.com/pt/rds/)
 - Amazon S3 [(para armazenamento)](https://aws.amazon.com/pt/s3/)
+- Amazon Elasticache [(para cache)](https://aws.amazon.com/pt/elasticache/)
 - Amazon VPC [(para rede virtual isolada logicamente)](https://aws.amazon.com/pt/vpc/)
 
 <hr/>
