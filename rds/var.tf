@@ -34,3 +34,25 @@ variable "dbSecret" {
   default     = "MTIzNDU2"
 }
 
+variable "databases" {
+  default = {
+    "customer" = {
+      identifier    = "customer-database"
+      database_name = "customers"
+      username      = "postgres"
+      password      = "MTIzNDU2"
+    }
+    "products" = {
+      identifier    = "products-database"
+      database_name = "products"
+      username      = "postgres"
+      password      = "MTIzNDU2"
+    }
+    "orders" = {
+      identifier    = "order-database"
+      database_name = "orders"
+      username      = "postgres"
+      password      = "MTIzNDU2"
+    }
+  }
+}
