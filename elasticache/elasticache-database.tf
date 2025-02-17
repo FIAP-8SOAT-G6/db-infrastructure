@@ -7,6 +7,7 @@ resource "aws_elasticache_replication_group" "elasticache-valkey" {
   node_type                  = "cache.t4g.micro"
   parameter_group_name       = "default.valkey8"
   transit_encryption_enabled = true
+  apply_immediately          = true
 
   security_group_ids = [aws_security_group.elasticache_sg.id]
 
